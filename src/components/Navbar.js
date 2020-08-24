@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -24,7 +25,7 @@ const Navbar = ({ changeLevel, level, handleChange }) => {
 
   return (
     <nav className="navbar">
-      <div>IROGRAM</div>
+      <Link to="/">IROGRAM</Link>
       <div className="slider">
         <span>Level: {level}</span>
         <Slider
