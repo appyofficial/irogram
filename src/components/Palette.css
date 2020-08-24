@@ -32,3 +32,12 @@
   border: 2px solid green;
   box-shadow: none;
 }
+
+.palette-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 5px;
+}

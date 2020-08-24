@@ -3,7 +3,7 @@ import ColorBox from "./ColorBox";
 import "./Palette.css";
 import Navbar from "./Navbar";
 
-const Palette = ({ palette: { colors } }) => {
+const Palette = ({ palette: { colors, paletteName, emoji } }) => {
   const [level, setLevel] = useState(500);
   const [format, setFormat] = useState("hex");
 
@@ -25,7 +25,9 @@ const Palette = ({ palette: { colors } }) => {
         handleChange={changeColorFormat}
       />
       <div className="Palette-colors">{colorboxes}</div>
-      {/*Footer goes here */}
+      <footer className="palette-footer">
+        <span>{paletteName}</span> <span> {emoji}</span>
+      </footer>
     </div>
   );
 };
