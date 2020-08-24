@@ -7,6 +7,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 
 const Navbar = ({ changeLevel, level, handleChange }) => {
   let [colorFormat, setColorFormat] = useState("hex");
+
+  const handleOnChange = (e) => {
+    setColorFormat(e.target.value);
+    handleChange(e.target.value);
+  };
+
   return (
     <nav className="navbar">
       <div>IROGRAM</div>
@@ -21,7 +27,7 @@ const Navbar = ({ changeLevel, level, handleChange }) => {
         />
       </div>
       <div className="select-container">
-        <Select value={colorFormat} onChange={handleChange}>
+        <Select value={colorFormat} onChange={handleOnChange}>
           <MenuItem value="hex">HEX - #ffffff</MenuItem>
           <MenuItem value="rgb">RGB - rgb(155,155,255)</MenuItem>
           <MenuItem value="rgba">RGBA - rgba(255,255,255, 1.0)</MenuItem>

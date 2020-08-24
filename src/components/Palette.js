@@ -5,15 +5,17 @@ import Navbar from "./Navbar";
 
 const Palette = ({ palette: { colors } }) => {
   const [level, setLevel] = useState(500);
+  const [format, setFormat] = useState("hex");
+
   const changeLevel = (level) => setLevel(level);
 
-  const colorboxes = colors[level].map((n, i) => (
-    <ColorBox name={n.name} background={n.hex} key={i} />
-  ));
-
-  const changeColorFormat = (e) => {
-    alert(`format changed to ${e.target.value}`);
+  const changeColorFormat = (val) => {
+    setFormat(val);
   };
+
+  const colorboxes = colors[level].map((color, i) => (
+    <ColorBox name={color.name} background={color[format]} key={i} />
+  ));
 
   return (
     <div className="Palette">
