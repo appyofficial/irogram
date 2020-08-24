@@ -6,10 +6,20 @@ import seedColors from "./seedColors";
 import { generatePalette } from "./colorHelper";
 
 function App() {
+  const findPalette = (id) => seedColors.find((palette) => palette.id === id);
+
   return (
     <Switch>
       <Route exact path="/" render={() => <h1>hello home</h1>} />
-      <Route exact path="/palette/:id" render={() => <h1>hello palette</h1>} />
+      <Route
+        exact
+        path="/palette/:id"
+        render={(routeProps) => (
+          <Palette
+            palette={generatePalette(findPalette(routeProps.match.params.id))}
+          />
+        )}
+      />
     </Switch>
   );
 }
