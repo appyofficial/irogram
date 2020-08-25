@@ -9,7 +9,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 
-const Navbar = ({ changeLevel, level, handleChange }) => {
+const Navbar = ({ changeLevel, level, handleChange, showLevelSlider }) => {
   let [colorFormat, setColorFormat] = useState("hex");
   let [openSnackbar, setOpenSnackbar] = useState(false);
 
@@ -26,16 +26,18 @@ const Navbar = ({ changeLevel, level, handleChange }) => {
   return (
     <nav className="navbar">
       <Link to="/">IROGRAM</Link>
-      <div className="slider">
-        <span>Level: {level}</span>
-        <Slider
-          defaultValue={level}
-          step={100}
-          min={100}
-          max={900}
-          onAfterChange={changeLevel}
-        />
-      </div>
+      {showLevelSlider && (
+        <div className="slider">
+          <span>Level: {level}</span>
+          <Slider
+            defaultValue={level}
+            step={100}
+            min={100}
+            max={900}
+            onAfterChange={changeLevel}
+          />
+        </div>
+      )}
       <div className="select-container">
         <Select value={colorFormat} onChange={handleFormatChange}>
           <MenuItem value="hex">HEX - #ffffff</MenuItem>
