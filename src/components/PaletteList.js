@@ -1,12 +1,11 @@
 import React from "react";
 import MiniPalette from "./MiniPalette";
-import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/styles";
 
 const styles = {
   main: {
-    background: "lightgrey",
-    height: "100%",
+    background: "#f1f1f3",
+    height: "100vh",
     display: "flex",
     alingItems: "flex-start",
     justifyContent: "center",
@@ -24,6 +23,7 @@ const styles = {
     alingItems: "center",
   },
   palettes: {
+    marginTop: "15px",
     boxSizing: "border-box",
     display: "grid",
     width: "100%",
@@ -32,7 +32,8 @@ const styles = {
   },
 };
 
-const PaletteList = ({ palette, classes }) => {
+const PaletteList = ({ history, palette, classes }) => {
+  const goToPalette = (id) => history.push(`/palette/${id}`);
   return (
     <div className={classes.main}>
       <div className={classes.container}>
@@ -41,9 +42,11 @@ const PaletteList = ({ palette, classes }) => {
         </nav>
         <div className={classes.palettes}>
           {palette.map((palette, id) => (
-            <Link id={id} to={`/palette/${palette.id}`}>
-              <MiniPalette {...palette} />
-            </Link>
+            <MiniPalette
+              key={id}
+              {...palette}
+              handleClick={() => goToPalette(palette.id)}
+            />
           ))}
         </div>
       </div>
