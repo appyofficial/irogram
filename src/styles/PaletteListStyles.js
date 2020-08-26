@@ -9,14 +9,16 @@ export default {
   container: {
     width: "50%",
     display: "flex",
-    alingItems: "flex-start",
+    alignItems: "flex-start",
     flexDirection: "column",
     flexWrap: "wrap",
   },
   nav: {
+    marginTop: "10px",
     display: "flex",
+    width: "100%",
     justifyContent: "space-between",
-    alingItems: "center",
+    alignItems: "center",
   },
   palettes: {
     marginTop: "15px",
