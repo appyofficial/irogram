@@ -29,7 +29,7 @@ const SingleColorPalette = ({ palette, colorId, handleChange }) => {
       key={i}
       name={color.name}
       background={color[format]}
-      showLink={false}
+      showingFullpalette={false}
     />
   ));
 
