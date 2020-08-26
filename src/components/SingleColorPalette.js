@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { withStyles } from "@material-ui/styles";
 import { Link } from "react-router-dom";
 import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
+import styles from "../styles/SingleColorPaletteStyles";
 
-const SingleColorPalette = ({ palette, colorId, handleChange }) => {
+const SingleColorPalette = ({ palette, colorId, handleChange, classes }) => {
   const [format, setFormat] = useState("hex");
 
   const changeColorFormat = (val) => {
@@ -34,14 +36,12 @@ const SingleColorPalette = ({ palette, colorId, handleChange }) => {
   ));
 
   return (
-    <div className="SingleColorPalette Palette">
+    <div className={`SingleColorPalette ${classes.palette}`}>
       <Navbar handleChange={changeColorFormat} />
-      <div className="Palette-colors">
+      <div className={classes.paletteColors}>
         {colorBox}
-        <div className="ColorBox goback">
-          <Link to={`/palette/${palette.id}`} className="back-btn">
-            Go Back
-          </Link>
+        <div className={classes.goBack}>
+          <Link to={`/palette/${palette.id}`}>Go Back</Link>
         </div>
       </div>
 
@@ -50,4 +50,4 @@ const SingleColorPalette = ({ palette, colorId, handleChange }) => {
   );
 };
 
-export default SingleColorPalette;
+export default withStyles(styles)(SingleColorPalette);
