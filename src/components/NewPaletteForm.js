@@ -85,21 +85,20 @@ class NewPaletteForm extends React.Component {
       colors: [{ color: "blue", name: "blue" }],
     };
   }
-  /*
-  componentDidMount() {
-    ValidatorForm.addValidationRule("isColornNameUnique", (value) => {
-      return this.state.colors.every(
-        ({ name }) => name.toLowerCase() !== value.toLowerCase()
-      );
-    });
 
-    ValidatorForm.addValidationRule("isColorUnique", (value) => {
-      return this.state.colors.every(
-        ({ color }) => color !== this.state.currentColor
-      );
-    });
+  componentDidMount() {
+    // custom rule will have name 'isPasswordMatch'
+    ValidatorForm.addValidationRule("isColorNameUnique", (value) =>
+      this.state.colors.every(
+        ({ name }) => name.toLowerCase() !== value.toLowerCase()
+      )
+    );
+
+    ValidatorForm.addValidationRule("isColorUnique", (value) =>
+      this.state.colors.every(({ color }) => color !== this.state.currentColor)
+    );
   }
-*/
+
   handleDrawerOpen = () => {
     this.setState({ open: true });
   };
@@ -184,6 +183,12 @@ class NewPaletteForm extends React.Component {
             <TextValidator
               value={this.state.colorName}
               onChange={this.handleChange}
+              validators={["required", "isColorNameUnique", "isColorUnique"]}
+              errorMessages={[
+                "Please give your color a name",
+                "Color name already exisist",
+                "This color already exisist",
+              ]}
             />
             <Button
               type="submit"
@@ -202,7 +207,11 @@ class NewPaletteForm extends React.Component {
         >
           <div className={classes.drawerHeader} />
           {this.state.colors.map((color) => (
-            <DraggableColorBox color={color.color} name={color.name} />
+            <DraggableColorBox
+              key={color.color}
+              color={color.color}
+              name={color.name}
+            />
           ))}
         </main>
       </div>
