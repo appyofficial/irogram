@@ -15,6 +15,13 @@ import { ChromePicker } from "react-color";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import DraggableColorList from "./DraggableColorList";
 import arrayMove from "array-move";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import "emoji-mart/css/emoji-mart.css";
+import { Picker } from "emoji-mart";
 
 const drawerWidth = 360;
 
@@ -81,7 +88,9 @@ class NewPaletteForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      newPaletteEmoji: "",
       open: false,
+      dialogOpen: false,
       newPaletteName: "",
       colorName: "",
       currentColor: "purple",
@@ -135,10 +144,12 @@ class NewPaletteForm extends React.Component {
 
   handleSubmit = () => {
     let newPaletteName = this.state.newPaletteName;
+    let newPaletteEmoji = this.state.newPaletteEmoji;
     const newPalette = {
       paletteName: newPaletteName,
       id: newPaletteName.toLowerCase().replace(/ /g, "-"),
       colors: this.state.colors,
+      emoji: newPaletteEmoji,
     };
     this.props.savePalette(newPalette);
     this.props.history.push("/");
@@ -166,6 +177,19 @@ class NewPaletteForm extends React.Component {
     console.log(allColors);
   };
 
+  //dialog box
+  handleClickOpen = () => {
+    this.setState({ dialogOpen: true });
+  };
+
+  handleClose = () => {
+    this.setState({ dialogOpen: false });
+  };
+
+  onEmojiSelect = (emoji) => {
+    this.setState({ newPaletteEmoji: emoji.native });
+  };
+
   render() {
     const { classes } = this.props;
     const { open } = this.state;
@@ -190,24 +214,49 @@ class NewPaletteForm extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
-              Persistent drawer
+              Create Palette
             </Typography>
-            <ValidatorForm onSubmit={this.handleSubmit}>
-              <TextValidator
-                label="Palette name"
-                name="newPaletteName"
-                value={this.state.newPaletteName}
-                onChange={this.handleChange}
-                validators={["required", "isPaletteNameUnique"]}
-                errorMessages={[
-                  "Please enter palette name",
-                  "Palette name already exists",
-                ]}
-              />
-              <Button type="submit" variant="contained" color="primary">
-                Save Palette
-              </Button>
-            </ValidatorForm>
+            {/*Dialog box*/}
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={this.handleClickOpen}
+            >
+              Save Palette
+            </Button>
+            <Dialog
+              open={this.state.dialogOpen}
+              onClose={this.handleClose}
+              aria-labelledby="form-dialog-title"
+            >
+              <ValidatorForm onSubmit={this.handleSubmit}>
+                <Picker onSelect={this.onEmojiSelect} />
+                <DialogTitle id="form-dialog-title">Save Palette</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>Enter a palate name.</DialogContentText>
+
+                  <TextValidator
+                    label="Palette name"
+                    name="newPaletteName"
+                    value={this.state.newPaletteName}
+                    onChange={this.handleChange}
+                    validators={["required", "isPaletteNameUnique"]}
+                    errorMessages={[
+                      "Please enter palette name",
+                      "Palette name already exists",
+                    ]}
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button type="submit" variant="contained" color="primary">
+                    Save Palette
+                  </Button>
+                  <Button onClick={this.handleClose} color="primary">
+                    Cancel
+                  </Button>
+                </DialogActions>
+              </ValidatorForm>
+            </Dialog>
           </Toolbar>
         </AppBar>
         <Drawer
