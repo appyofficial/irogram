@@ -4,8 +4,11 @@ export default {
     borderRadius: "5px",
     padding: "0.5rem",
     position: "relative",
+    cursor: "pointer",
     "& :hover": {
-      cursor: "pointer",
+      svg: {
+        opacity: "1",
+      },
     },
     fontSize: 0,
   },
@@ -29,5 +32,19 @@ export default {
     margin: "0 auto",
     display: "inline-block",
     position: "relative",
+  },
+  delete: {},
+  deleteIcon: {
+    color: "white",
+    backgroundColor: "red",
+    width: "25px",
+    height: "25px",
+    position: "absolute",
+    top: "0",
+    right: "0",
+    zIndex: "10",
+    padding: "1px",
+    borderRadius: "50%",
+    opacity: "0",
   },
 };

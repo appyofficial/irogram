@@ -17,6 +17,7 @@ function App() {
   };
 
   useEffect(() =>
+    //saving palettes : local storage
     window.localStorage.setItem("palettes", JSON.stringify(palettes))
   );
 
