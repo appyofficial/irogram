@@ -40,6 +40,7 @@ const styles = (theme) => ({
     justifyContent: "flex-end",
   },
   content: {
+    fontSize: "0",
     height: "calc(100vh - 64px)",
     flexGrow: 1,
     transition: theme.transitions.create("margin", {

@@ -8,9 +8,7 @@ import styles from "../styles/PaletteStyles";
 const Palette = ({ palette: { colors, paletteName, emoji, id }, classes }) => {
   const [level, setLevel] = useState(500);
   const [format, setFormat] = useState("hex");
-
   const changeLevel = (level) => setLevel(level);
-
   const changeColorFormat = (val) => {
     setFormat(val);
   };
