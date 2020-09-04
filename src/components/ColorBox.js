@@ -19,7 +19,6 @@ const ColorBox = ({
       setCopied((copied) => !copied);
     }, 1500);
   };
-
   return (
     <CopyToClipboard text={background} onCopy={changeCopyState}>
       <div style={{ background: background }} className={classes.colorBox}>
