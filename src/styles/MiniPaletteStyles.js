@@ -5,12 +5,10 @@ export default {
     padding: "0.5rem",
     position: "relative",
     cursor: "pointer",
-    "& :hover": {
-      svg: {
-        opacity: "1",
-      },
-    },
     fontSize: 0,
+    "&:hover svg": {
+      opacity: 1,
+    },
   },
   colors: {
     backgroundColor: "white",
@@ -44,7 +42,6 @@ export default {
     right: "0",
     zIndex: "10",
     padding: "1px",
-    borderRadius: "50%",
-    opacity: "0",
+    opacity: 0,
   },
 };
