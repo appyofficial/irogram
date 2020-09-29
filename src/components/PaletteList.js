@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import { withStyles } from "@material-ui/styles";
 import styles from "../styles/PaletteListStyles";
@@ -17,7 +17,7 @@ const PaletteList = ({ history, palette, classes, deletePalette }) => {
         <nav className={classes.nav}>
           <Logo width="120px" withText />
           <Button onClick={() => usingHistory.push("/palette/new")}>
-            Create
+            Create Palette
           </Button>
         </nav>
         <div className={classes.palettes}>
@@ -44,7 +44,10 @@ const PaletteList = ({ history, palette, classes, deletePalette }) => {
             backgroundColor: "white",
           }}
         >
-          <p>How to use Irogram?</p>
+          <Link to="/how-to">
+            <p>How to use Irogram?</p>
+          </Link>
+
           <p>
             Made by
             <a

@@ -27,9 +27,13 @@ export default {
     background: "#01142F",
     padding: "10px 20px",
     "& button": {
-      background: "lightgreen",
-      color: "white",
+      background: "white",
+      color: "black",
       fontWeight: "bold",
+      borderRadius: "100px",
+      "&:hover": {
+        color: "white",
+      },
     },
   },
   palettes: {

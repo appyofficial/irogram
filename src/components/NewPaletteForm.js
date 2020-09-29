@@ -23,6 +23,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 import styles from "../styles/NewPaletteFormStyle";
+import { Link } from "react-router-dom";
 
 class NewPaletteForm extends React.Component {
   static defaultProps = { maxColors: 20 };
@@ -162,9 +163,24 @@ class NewPaletteForm extends React.Component {
               variant="outlined"
               color="primary"
               onClick={this.handleClickOpen}
+              style={{
+                background: "green",
+                color: "white",
+                margin: "0 10px 0 10px",
+              }}
             >
               Save Palette
             </Button>
+            <Link to="/">
+              <Button
+                variant="outlined"
+                color="primary"
+                style={{ background: "white", color: "black" }}
+              >
+                Cancel
+              </Button>
+            </Link>
+
             <Dialog
               open={this.state.dialogOpen}
               onClose={this.handleClose}

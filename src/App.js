@@ -27,6 +27,11 @@ function App() {
     <Switch>
       <Route
         exact
+        path="/how-to"
+        render={(routeProps) => <div>Video is coming soon</div>}
+      />
+      <Route
+        exact
         path="/palette/new"
         render={(routeProps) => (
           <NewPaletteForm
