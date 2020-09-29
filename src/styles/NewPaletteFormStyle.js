@@ -3,12 +3,22 @@ const drawerWidth = 360;
 const styles = (theme) => ({
   root: {
     display: "flex",
+    backgroundColor: "#f2f8fd !important",
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: "5%",
+    padding: "0 5px 0 5px",
+    background: "#01142F",
+    color: "white",
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -31,6 +41,7 @@ const styles = (theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    backgroundColor: "#f2f8fd",
   },
   drawerHeader: {
     display: "flex",
@@ -38,6 +49,15 @@ const styles = (theme) => ({
     padding: "0 8px",
     ...theme.mixins.toolbar,
     justifyContent: "flex-end",
+  },
+  drawerContent: {
+    padding: "10px 5px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: "100%",
+    maxHeight: "500px",
   },
   content: {
     fontSize: "0",

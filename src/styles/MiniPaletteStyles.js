@@ -1,5 +1,6 @@
 export default {
   root: {
+    maxWidth: "300px",
     backgroundColor: "white",
     borderRadius: "5px",
     padding: "0.5rem",

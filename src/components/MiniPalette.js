@@ -2,6 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/styles";
 import styles from "../styles/MiniPaletteStyles";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { v4 as uuidv4 } from "uuid";
 
 const MiniPalette = ({
   classes,
@@ -14,7 +15,7 @@ const MiniPalette = ({
 }) => {
   const miniColorBoxes = colors.map((color) => (
     <div
-      key={color.name}
+      key={uuidv4()}
       className={classes.minicolor}
       style={{ backgroundColor: color.color }}
     />

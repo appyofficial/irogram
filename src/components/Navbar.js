@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { withStyles } from "@material-ui/styles";
-import { Link } from "react-router-dom";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import Select from "@material-ui/core/Select";
@@ -9,6 +8,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import styles from "../styles/NavbarStyles";
+import Logo from "./Logo";
 
 const Navbar = ({
   changeLevel,
@@ -32,7 +32,7 @@ const Navbar = ({
 
   return (
     <nav className={classes.navbar}>
-      <Link to="/">IROGRAM</Link>
+      <Logo width="40px" />
       {showLevelSlider && (
         <div className={classes.slider}>
           <span>Level: {level}</span>
@@ -46,7 +46,11 @@ const Navbar = ({
         </div>
       )}
       <div className={classes.selectContainer}>
-        <Select value={colorFormat} onChange={handleFormatChange}>
+        <Select
+          value={colorFormat}
+          onChange={handleFormatChange}
+          style={{ color: "white" }}
+        >
           <MenuItem value="hex">HEX - #ffffff</MenuItem>
           <MenuItem value="rgb">RGB - rgb(155,155,255)</MenuItem>
           <MenuItem value="rgba">RGBA - rgba(255,255,255, 1.0)</MenuItem>

@@ -139,7 +139,7 @@ class NewPaletteForm extends React.Component {
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
-          color="default"
+          color="rgb(56,56,56)"
           position="fixed"
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
@@ -215,50 +215,53 @@ class NewPaletteForm extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <Typography variant="h4">Select your color</Typography>
-          <div>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={this.clearPalette}
-            >
-              Clear Palette
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.newRandomColor}
-              disabled={this.state.colors.length >= this.props.maxColors}
-            >
-              Random Color
-            </Button>
-          </div>
-          <ChromePicker
-            color={this.state.currentColor}
-            onChangeComplete={this.updateCurrentColor}
-          />
-          <ValidatorForm onSubmit={this.addNewColor} ref="form">
-            <TextValidator
-              name="colorName"
-              value={this.state.colorName}
-              onChange={this.handleChange}
-              validators={["required", "isColorNameUnique", "isColorUnique"]}
-              errorMessages={[
-                "Please give your color a name",
-                "Color name already exisist",
-                "This color already exisist",
-              ]}
+          <div className={classes.drawerContent}>
+            <Typography variant="h4">Select your color</Typography>
+            <div>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={this.clearPalette}
+              >
+                Clear Palette
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.newRandomColor}
+                disabled={this.state.colors.length >= this.props.maxColors}
+              >
+                Random Color
+              </Button>
+            </div>
+            <ChromePicker
+              color={this.state.currentColor}
+              onChangeComplete={this.updateCurrentColor}
             />
-            <Button
-              type="submit"
-              color="primary"
-              variant="contained"
-              style={{ backgroundColor: this.state.currentColor }}
-              disabled={this.state.colors.length >= this.props.maxColors}
-            >
-              Add Color
-            </Button>
-          </ValidatorForm>
+            <ValidatorForm onSubmit={this.addNewColor} ref="form">
+              <TextValidator
+                name="colorName"
+                placeholder="Name your color"
+                value={this.state.colorName}
+                onChange={this.handleChange}
+                validators={["required", "isColorNameUnique", "isColorUnique"]}
+                errorMessages={[
+                  "Please give your color a name",
+                  "Color name already exisist",
+                  "This color already exisist",
+                ]}
+              />
+              <Button
+                type="submit"
+                color="primary"
+                variant="contained"
+                style={{ backgroundColor: this.state.currentColor }}
+                disabled={this.state.colors.length >= this.props.maxColors}
+              >
+                Add Color
+              </Button>
+            </ValidatorForm>
+          </div>
         </Drawer>
         <main
           className={classNames(classes.content, {
